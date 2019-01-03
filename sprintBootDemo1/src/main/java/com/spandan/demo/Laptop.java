@@ -7,6 +7,7 @@ public class Laptop {
 	
 	private int lid;
 	private String brand;
+	
 	public int getLid() {
 		return lid;
 	}
