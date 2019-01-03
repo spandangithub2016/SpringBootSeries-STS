@@ -35,6 +35,12 @@ public class AlienController {
 		Alien alien = repo.findById(aid).orElse(new Alien());
 		modelAndView.addObject(alien);
 		
+		//find by any property without writing method for that through Spring JPA
+		System.out.println(repo.findByTech("Python"));
+		
+		System.out.println(repo.findByAidGreaterThan(104));
+		System.out.println(repo.findByTechSorted("Java"));
+		
 		return modelAndView;
 	}
 	
