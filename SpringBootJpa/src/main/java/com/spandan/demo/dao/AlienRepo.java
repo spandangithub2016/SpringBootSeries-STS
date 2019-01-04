@@ -2,13 +2,14 @@ package com.spandan.demo.dao;
 
 import java.util.List;
 
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.CrudRepository;
 
 import com.spandan.demo.model.Alien;
 
-public interface AlienRepo extends CrudRepository<Alien, Integer> {
-
+//public interface AlienRepo extends CrudRepository<Alien, Integer> {
+public interface AlienRepo extends JpaRepository<Alien, Integer> {
+	
 	/** 
 	 * Spring JPA provides a special feature:
 	 * we can search by any property of an entity without creating any method for that

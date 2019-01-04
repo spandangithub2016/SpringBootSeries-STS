@@ -1,16 +1,21 @@
 package com.spandan.demo.controller;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.spandan.demo.dao.AlienRepo;
 import com.spandan.demo.model.Alien;
 
-@Controller
+@RestController
+@ResponseBody
 public class AlienController {
 	
 	@Autowired
@@ -45,11 +50,21 @@ public class AlienController {
 		return modelAndView;
 	}
 	
+	/**
+	 *  Jackson-core is responsible to convert java onject to JSON 
+	 *  */
+	
 	@RequestMapping("/aliens")
-	@ResponseBody
-	public String getAllAlien() {
-		System.out.println("hi...");
-		return repo.findAll().toString();
+	public List<Alien> getAllAlien() {
+		return repo.findAll();
+
+
+	}
+	
+	@RequestMapping("/alien/{aid}")
+	
+	public Optional<Alien> getAlien(@PathVariable("aid") int aid) {
+		return repo.findById(aid);
 
 	}
 	
